@@ -10,14 +10,14 @@
         >
     <DockPanel>
 <!--        Works-->
-        <local:ItemView DockPanel.Dock="Top" ViewModel="{Binding ElementName=List, Path=SelectedItem}"/> 
+        <local:ItemView DockPanel.Dock="Top" ViewModel="{Binding ElementName=List, Path=SelectedItem.Item}"/> 
 <!--        Does not work-->
-        <local:ItemView DockPanel.Dock="Top" ViewModel="{Binding SelectedItem}"/>
+        <local:ItemView DockPanel.Dock="Top" ViewModel="{Binding SelectedItem.Item}"/>
 
 <!--        Set in MainWindow.xaml.cs. Works-->
         <local:ItemView DockPanel.Dock="Top" x:Name="ItemView"/>
         
         
-        <ListView ItemsSource="{Binding Items}" Name="List" DisplayMemberPath="Name" SelectedItem="{Binding SelectedItem}"/>
+        <ListView ItemsSource="{Binding Items}" Name="List" DisplayMemberPath="Item.Name" SelectedItem="{Binding SelectedItem}"/>
     </DockPanel>
 </Window>

@@ -30,7 +30,7 @@ namespace ReactiveUseControlBindingSample
 
             this.WhenActivated(d =>
             {
-                ViewModel.WhenAnyValue(x => x.SelectedItem).Subscribe(x => ItemView.ViewModel = x).DisposeWith(d);
+                ViewModel.WhenAnyValue(x => x.SelectedItem).Subscribe(x => ItemView.ViewModel = x?.Item).DisposeWith(d);
             });
         }
 
@@ -45,7 +45,7 @@ namespace ReactiveUseControlBindingSample
 
         public ViewModel ViewModel
         {
-            get { return (ViewModel) GetValue(ViewModelProperty); }
+            get { return (ViewModel)GetValue(ViewModelProperty); }
             set { SetValue(ViewModelProperty, value); }
         }
     }

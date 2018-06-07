@@ -9,21 +9,21 @@ namespace ReactiveUseControlBindingSample
 {
     public class ViewModel : ReactiveObject
     {
-        private List<Item> _items;
-        private Item _selectedItem;
+        private List<BigItem> _items;
+        private BigItem _selectedItem;
 
         public ViewModel()
         {
-            Items = Enumerable.Range(0, 10).Select(x => new Item() {Name = "Name " + x, Email = x + "@gmail.com"}).ToList();
+            Items = Enumerable.Range(0, 10).Select(x => new BigItem(){Item = new Item() {Name = "Name " + x, Email = x + "@gmail.com"}}).ToList();
         }
 
-        public Item SelectedItem
+        public BigItem SelectedItem
         {
             get { return _selectedItem; }
             set { this.RaiseAndSetIfChanged(ref _selectedItem, value); }
         }
 
-        public List<Item> Items
+        public List<BigItem> Items
         {
             get { return _items; }
             set { this.RaiseAndSetIfChanged(ref _items, value); }
@@ -34,5 +34,10 @@ namespace ReactiveUseControlBindingSample
     {
         public string Name { get; set; }
         public string Email { get; set; }
+    }
+
+    public class BigItem
+    {
+        public Item Item { get; set; }
     }
 }
