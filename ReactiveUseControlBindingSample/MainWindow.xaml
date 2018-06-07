@@ -5,8 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ReactiveUseControlBindingSample"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="450" Width="800"
+        DataContext="{Binding RelativeSource={RelativeSource Self}, Path=ViewModel}"
+        >
+    <DockPanel>
+<!--        Works-->
+        <local:ItemView DockPanel.Dock="Top" ViewModel="{Binding ElementName=List, Path=SelectedItem}"/> 
+<!--        Does not work-->
+        <local:ItemView DockPanel.Dock="Top" ViewModel="{Binding SelectedItem}"/>
+
+<!--        Set in MainWindow.xaml.cs. Works-->
+        <local:ItemView DockPanel.Dock="Top" x:Name="ItemView"/>
         
-    </Grid>
+        
+        <ListView ItemsSource="{Binding Items}" Name="List" DisplayMemberPath="Name" SelectedItem="{Binding SelectedItem}"/>
+    </DockPanel>
 </Window>
