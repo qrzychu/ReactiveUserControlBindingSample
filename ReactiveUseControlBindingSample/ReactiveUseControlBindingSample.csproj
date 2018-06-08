@@ -86,6 +86,7 @@
     <Compile Include="ItemView.xaml.cs">
       <DependentUpon>ItemView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModel.cs" />
     <Page Include="ItemView.xaml">
       <SubType>Designer</SubType>

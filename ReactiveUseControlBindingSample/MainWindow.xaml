@@ -18,6 +18,10 @@
         <local:ItemView DockPanel.Dock="Top" x:Name="ItemView"/>
         
         
-        <ListView ItemsSource="{Binding Items}" Name="List" DisplayMemberPath="Item.Name" SelectedItem="{Binding SelectedItem}"/>
+        <local:ItemView DockPanel.Dock="Top" ViewModel="{Binding Holder.Item}"/>
+        
+        
+        <ListView ItemsSource="{Binding Items}" Name="List" DisplayMemberPath="Item.Name" SelectedItem="{Binding Holder.Item}"/>
+<!--        <ListView ItemsSource="{Binding Items}" Name="List" DisplayMemberPath="Item.Name" SelectedItem="{Binding SelectedItem}"/>-->
     </DockPanel>
 </Window>
