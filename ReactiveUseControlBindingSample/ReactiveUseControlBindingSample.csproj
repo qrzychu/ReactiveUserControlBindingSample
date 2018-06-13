@@ -40,6 +40,9 @@
     <Reference Include="ReactiveUI.WPF, Version=8.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ReactiveUI.WPF.8.2.1\lib\net461\ReactiveUI.WPF.dll</HintPath>
     </Reference>
+    <Reference Include="ReactiveValidation, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ReactiveValidation.1.0.2\lib\net45\ReactiveValidation.dll</HintPath>
+    </Reference>
     <Reference Include="Splat, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Splat.4.0.0\lib\net461\Splat.dll</HintPath>
     </Reference>
@@ -83,6 +86,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ItemValidation.cs" />
     <Compile Include="ItemView.xaml.cs">
       <DependentUpon>ItemView.xaml</DependentUpon>
     </Compile>

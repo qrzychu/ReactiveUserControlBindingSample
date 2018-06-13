@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using ReactiveUI;
 using ReactiveUseControlBindingSample.Annotations;
 
@@ -15,14 +16,21 @@ namespace ReactiveUseControlBindingSample
         private List<BigItem> _items;
         private BigItem _selectedItem;
         private ItemHolder _holder;
+        private ItemValidation _validation;
 
         public ViewModel()
         {
-            Items = Enumerable.Range(0, 10).Select(x => new BigItem(){Item = new Item() {Name = "Name " + x, Email = x + "@gmail.com"}}).ToList();
+            var rand = new Random();
+            Items = Enumerable.Range(0, 10).Select(x => new BigItem(){Item = new Item() {Name = "Name " + x, Email = x + "@gmail.com", Weight = rand.NextDouble() * 5 - 2}}).ToList();
 
             Holder = new ItemHolder();
 
             this.WhenAnyValue(x => x.SelectedItem).Subscribe(x => Holder.Item = x);
+
+            this.WhenAnyValue(x => x.SelectedItem).Subscribe(item =>
+            {
+                Validation = item != null ? new ItemValidation() {Weight = item.Item.Weight} : null;
+            });
         }
 
         public ItemHolder Holder
@@ -41,6 +49,12 @@ namespace ReactiveUseControlBindingSample
         {
             get { return _items; }
             set { this.RaiseAndSetIfChanged(ref _items, value); }
+        }
+
+        public ItemValidation Validation
+        {
+            get { return _validation; }
+            private set { this.RaiseAndSetIfChanged(ref _validation, value); }
         }
     }
 
@@ -69,6 +83,8 @@ namespace ReactiveUseControlBindingSample
     {
         public string Name { get; set; }
         public string Email { get; set; }
+
+        public double Weight { get; set; }
     }
 
     public class BigItem

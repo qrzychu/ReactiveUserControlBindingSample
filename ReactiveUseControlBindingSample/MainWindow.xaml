@@ -9,6 +9,8 @@
         DataContext="{Binding RelativeSource={RelativeSource Self}, Path=ViewModel}"
         >
     <DockPanel>
+        <TextBox DockPanel.Dock="Top" Text="{Binding Validation.Weight}"/>
+        
 <!--        Works-->
         <local:ItemView DockPanel.Dock="Top" ViewModel="{Binding ElementName=List, Path=SelectedItem.Item}"/> 
 <!--        Does not work-->
@@ -21,7 +23,7 @@
         <local:ItemView DockPanel.Dock="Top" ViewModel="{Binding Holder.Item}"/>
         
         
-        <ListView ItemsSource="{Binding Items}" Name="List" DisplayMemberPath="Item.Name" SelectedItem="{Binding Holder.Item}"/>
-<!--        <ListView ItemsSource="{Binding Items}" Name="List" DisplayMemberPath="Item.Name" SelectedItem="{Binding SelectedItem}"/>-->
+<!--        <ListView ItemsSource="{Binding Items}" Name="List" DisplayMemberPath="Item.Name" SelectedItem="{Binding Holder.Item}"/>-->
+        <ListView ItemsSource="{Binding Items}" Name="List" DisplayMemberPath="Item.Name" SelectedItem="{Binding SelectedItem}"/>
     </DockPanel>
 </Window>
