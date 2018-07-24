@@ -12,7 +12,7 @@
 <!--        Works-->
         <local:ItemView DockPanel.Dock="Top" ViewModel="{Binding ElementName=List, Path=SelectedItem.Item}"/> 
 <!--        Does not work-->
-        <local:ItemView DockPanel.Dock="Top" ViewModel="{Binding SelectedItem.Item}"/>
+        <local:ItemView DockPanel.Dock="Top" ViewModel="{Binding SelectedItem.Item, Mode=OneWay}"/>
 
 <!--        Set in MainWindow.xaml.cs. Works-->
         <local:ItemView DockPanel.Dock="Top" x:Name="ItemView"/>
@@ -21,7 +21,8 @@
         <local:ItemView DockPanel.Dock="Top" ViewModel="{Binding Holder.Item}"/>
         
         
-        <ListView ItemsSource="{Binding Items}" Name="List" DisplayMemberPath="Item.Name" SelectedItem="{Binding Holder.Item}"/>
-<!--        <ListView ItemsSource="{Binding Items}" Name="List" DisplayMemberPath="Item.Name" SelectedItem="{Binding SelectedItem}"/>-->
+<!--        <ListView ItemsSource="{Binding Items}" Name="List" DisplayMemberPath="Item.Name" SelectedItem="{Binding Holder.Item}"/>-->
+        <ListView ItemsSource="{Binding Items}" Name="List" DisplayMemberPath="Item.Name" SelectedItem="{Binding SelectedItem}"/>
     </DockPanel>
+    
 </Window>
